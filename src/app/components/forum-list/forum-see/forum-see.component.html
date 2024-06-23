@@ -1,0 +1,34 @@
+<mat-card-title>FORUM</mat-card-title>
+
+<div class="container" *ngIf="question">
+  <mat-card-subtitle >
+    <p>{{question.question}}</p>
+  </mat-card-subtitle>
+
+  <mat-card>
+    <div class="container">
+      <mat-card-content *ngFor="let answer of answers">
+        <img src="../../../../assets/images/imgUser.png" alt="">
+        <div class="answers">
+          <a>{{answer.authorName}}</a>
+          <p style="font-weight: 500; font-size: 1rem">{{answer.content}}</p>
+        </div>
+        <span class="space"></span>
+        <span>{{answer.createdAt | date:'shortTime' }}</span>
+      </mat-card-content>
+    </div>
+
+    <section class="comment">
+      <div class="comment-input">
+          <textarea class="comment-textarea" placeholder="Add a comment..."
+                    (input)="onAnswerInput($event)" [(ngModel)]="writtenAnswer"
+          ></textarea>
+        <button class="comment-button">
+          <mat-icon
+            (click)="addAnswer()"
+          >send</mat-icon>
+        </button>
+      </div>
+    </section>
+  </mat-card>
+</div>

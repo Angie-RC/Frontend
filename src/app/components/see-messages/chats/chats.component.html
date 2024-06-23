@@ -1,0 +1,6 @@
+<div class="message-box">
+  <p *ngFor="let chat of chatsInput"
+     [ngClass]="(userLogedId == chat.authorId) ? 'content sent' : 'content received'">
+    {{ chat.content }} <span>{{ chat.createdAt | date:'shortTime' }}</span>
+  </p>
+</div>

@@ -1,0 +1,28 @@
+
+<div class="container">
+  <section class="chats">
+    <h2>Your Chats</h2>
+    <div class="chat-box">
+      <button *ngFor=" let user of chatsUsers" (click)="changeNameChat(user)"
+              [ngClass]="(user.name +' '+ user.lastName == nameChat)?'selected':'ok'">
+        {{user.name}} {{user.lastName}}
+      </button>
+    </div>
+  </section>
+
+  <section class="message-section">
+    <h3>{{nameChat}}</h3>
+    <div class="messages">
+      <app-chats
+        [chatsInput] = chatsMessage
+      ></app-chats>
+    </div>
+    <div class="input-message">
+      <textarea
+        (input)="onMessageInput($event)" [(ngModel)]="writtenMessage"
+      ></textarea>
+      <mat-icon (click)="sendMessage()">send</mat-icon>
+    </div>
+  </section>
+
+</div>

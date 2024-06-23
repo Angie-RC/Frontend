@@ -1,0 +1,36 @@
+
+
+<mat-card-title>FORUM</mat-card-title>
+
+ <mat-card>
+   <div class="new-button">
+     <button mat-flat-button (click)="changeIsAddQuestion()">New Forum</button>
+   </div>
+
+   <div class="content">
+     <mat-card-content *ngFor="let question of forumQuestions">
+       <div class="element">
+         <img src="assets/images/imgUser.png" alt="">
+         <a routerLink="/forum-answer/{{question.id}}">
+           {{question.question}}
+         </a>
+       </div>
+       <span class="space"></span>
+       <span>{{question.createdAt | date:'shortTime'  }}</span>
+     </mat-card-content>
+   </div>
+
+ </mat-card>
+
+  <section class="new-forum" *ngIf="isAddQuestion">
+    <div class="forum-header">
+      <h2>Ask your question</h2>
+    </div>
+    <div class="forum-body">
+      <textarea class="question-textarea" placeholder="Type your question here"
+                (input)="onQuestionInput($event)" [(ngModel)]="writtenQuestion"></textarea>
+      <button class="button publish " (click)="addQuestion()">Publish</button>
+      <button class="button cancel" (click)="changeIsAddQuestion()">Cancel</button>
+    </div>
+  </section>
+

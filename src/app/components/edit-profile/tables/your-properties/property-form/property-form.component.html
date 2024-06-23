@@ -1,0 +1,70 @@
+
+<h1 class="title">{{editMode?'Edit':'Add'}} your property</h1>
+<form [formGroup]="propertyForm">
+
+  <div class="form-body">
+    <mat-form-field appearance="outline" class="form-field name">
+      <mat-label>Name</mat-label>
+      <input matInput type="text" name="name" formControlName="name" >
+      <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="form-field category">
+      <mat-label>Category</mat-label>
+      <mat-select formControlName="category">
+        <mat-option value="room">Rooms</mat-option>
+        <mat-option value="department">Department</mat-option>
+        <mat-option value="house">Houses</mat-option>
+        <mat-option value="commercialSpace">Commercial Space</mat-option>
+      </mat-select>
+      <mat-icon matSuffix>category</mat-icon>
+    </mat-form-field>
+
+  <mat-form-field appearance="outline" class="form-field-description">
+    <mat-label>Description</mat-label>
+    <textarea matInput formControlName="description"></textarea>
+    <mat-icon matSuffix>description</mat-icon>
+  </mat-form-field>
+
+    <mat-form-field appearance="outline" class="form-field characteristic">
+      <mat-label>Characteristics</mat-label>
+      <textarea matInput formControlName="characteristics"></textarea>
+      <mat-icon matSuffix>list_alt</mat-icon>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="form-field location">
+      <mat-label>Location</mat-label>
+      <input matInput type="text" name="location" formControlName="location" >
+      <mat-icon matSuffix>pin_drop</mat-icon>
+    </mat-form-field>
+
+      <mat-form-field appearance="outline" class="form-field imgUrl">
+        <mat-label>Image</mat-label>
+        <textarea matInput formControlName="urlImg"></textarea>
+        <mat-icon matSuffix>photo</mat-icon>
+      </mat-form-field>
+
+    <mat-form-field appearance="outline" class="form-field available">
+      <mat-label>Available</mat-label>
+      <mat-select formControlName="available">
+        <mat-option [value]="true">Yes</mat-option>
+        <mat-option [value]="false">No</mat-option>
+      </mat-select>
+      <mat-icon matSuffix>check</mat-icon>
+    </mat-form-field>
+  </div>
+<div style="display: flex;">
+  <button
+    (click)="addProperty()"
+          class="button-save">
+    {{editMode?'Edit':'Add'}}
+  </button>
+  <button style="background: #DB6767"
+          class="button-save"
+          (click)="onCancelEdit()"
+  >Cancel
+  </button>
+</div>
+</form>
+
+
